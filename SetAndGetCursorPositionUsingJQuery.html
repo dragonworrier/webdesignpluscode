@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        // Set Cursor Position
+        $.fn.setCursorPosition = function (position) {
+            this.each(function (index, elem) {
+                if (elem.setSelectionRange) {
+                    elem.setSelectionRange(position, position);
+                } else if (elem.createTextRange) {
+                    var range = elem.createTextRange();
+                    range.collapse(true);
+                    range.moveEnd('character', position);
+                    range.moveStart('character', position);
+                    range.select();
+                }
+            });
+            return this;
+        };
+
+        // Get cursor position
+        $.fn.getCursorPosition = function () {
+            var el = $(this).get(0);
+            var position = 0;
+            if ('selectionStart' in el) {
+                position = el.selectionStart;
+            } else if ('selection' in document) {
+                el.focus();
+                var Sel = document.selection.createRange();
+                var SelLength = document.selection.createRange().text.length;
+                Sel.moveStart('character', -el.value.length);
+                position = Sel.text.length - SelLength;
+            }
+            return position;
+        };
+
+        function SetPosition() {
+            $("#first_name").setCursorPosition(5);
+            $("#first_name").focus();
+        }
+
+        function GetPosition() {
+            alert($("#first_name").getCursorPosition());
+            $("#first_name").focus();
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <input type="text" id="first_name" value="asdfghjkl" />
+    <input type="button" value="Set Position" onclick="SetPosition();" />
+    <input type="button" value="Get Position" onclick="GetPosition();" />
+</body>
+</html>
