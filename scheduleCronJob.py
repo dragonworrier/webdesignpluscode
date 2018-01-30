@@ -6,6 +6,8 @@ pip3 install schedule
 If you have also installed crontab package then you may see some errors, to uninstall crontab
 use following command:
 pip3 uninstall crontab
+
+http://webdesignpluscode.blogspot.com/2018/01/how-to-schedule-cron-job-using-python.html
 '''
 import schedule, sys
 from crontab import CronTab
