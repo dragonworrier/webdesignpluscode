@@ -1,3 +1,5 @@
+import subprocess
+
 def connect_ssh():
     sshProcess = subprocess.Popen(['ssh', 
                    'admin@192.168.1.1'],
