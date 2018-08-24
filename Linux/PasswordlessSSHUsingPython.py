@@ -1,6 +1,6 @@
 def connect_ssh():
     sshProcess = subprocess.Popen(['ssh', 
-                   'vadmin@192.168.1.1'],
+                   'admin@192.168.1.1'],
                    stdin=subprocess.PIPE, 
                    stdout = subprocess.PIPE,
                    universal_newlines=True,
